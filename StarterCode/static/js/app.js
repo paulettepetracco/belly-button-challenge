@@ -68,7 +68,7 @@ function updateBubbleChart(sample) {
         let otuLabels = sampleResult.otu_labels;
         let sampleValues = sampleResult.sample_values;
 
-        // Create trace and plot for bubble chart
+        // Create trace and layout for bubble chart
         let trace = [{
             x: otuIDs,
             y: sampleValues,
@@ -80,7 +80,14 @@ function updateBubbleChart(sample) {
                 colorscale: 'Earth',
             }
         }];
-        Plotly.newPlot('bubble', trace);
+
+        // define the layout for the bubble chart
+        let layout = {
+            xaxis: {title: 'OTU ID'}
+        };
+
+        // Plot the bubble chart with defined trace and layout
+        Plotly.newPlot('bubble', trace, layout);
         console.log('${sample} bubble chart loaded');
     });
 }
